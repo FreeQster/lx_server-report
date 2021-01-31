@@ -1,0 +1,5 @@
+- Mail report
+- Free Diskspace
+- Warning level percentage
+- CPU Load
+- 
