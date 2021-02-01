@@ -1,5 +1,5 @@
-- Mail report
-- Free Diskspace
-- Warning level percentage
+- Mail report - OK
+- Free Diskspace - OK
+- Warning level percentage - OK
 - CPU Load
-- 
+- Install script
