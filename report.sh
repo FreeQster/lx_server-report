@@ -1,13 +1,7 @@
 #!/bin/bash
 # See README.md
 
-### Global_Vars
-# Mailserver hostname or address
-SMTPSERVER=Mailserver
-# Warning treshold percentage for free disk space
-DISKSPACE_WARN=80
-# Critical treshold percentage for free disk space
-DISKSPACE_CRIT=80
+source config.sh
 
 #Warnlevels for the e-mail subject (Can be 0=info, 1=warning, 2=critical)
 WARNLEVEL=0
@@ -25,7 +19,7 @@ diskspace_check() {
 		POS_PERCENT=`expr index "$LINE" %`
 		PERCENT=${LINE:$POS_PERCENT-4:3}
 		echo $PERCENT
-		
+
 		if (($PERCENT>=DISKSPACE_WARN));
 			then
 			if (($WARNLEVEL<1));
@@ -33,7 +27,7 @@ diskspace_check() {
 				WARNLEVEL=1
 				fi
 			fi
-			
+
 		if (($PERCENT>=DISKSPACE_CRIT));
 			then
 			if (($WARNLEVEL<2));
@@ -41,12 +35,23 @@ diskspace_check() {
 				WARNLEVEL=2
 				fi
 			fi
-			
+
 	done < $DF_FILE
 }
-#write line for mail.txt file, which is the content of the later sent mail
+
+send_mail() {
+	if WARNLEVEL==1
+	then
+		 mail -s "WARNING - Disk-Usage over $DISKSPACE_WARN percent" $MAIL_TO < ./df.txt
+	 fi
+
+	 if WARNLEVEL==2
+	 then
+			mail -s "CRITICAL - Disk-Usage over $DISKSPACE_CRIT percent" $MAIL_TO < ./df.txt
+		fi
+}
+
 
 write_diskspace
 diskspace_check
-echo "Warnlevel = $WARNLEVEL"
- 
+send_mail
