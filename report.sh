@@ -18,37 +18,37 @@ diskspace_check() {
 	while read LINE; do
 		POS_PERCENT=`expr index "$LINE" %`
 		PERCENT=${LINE:$POS_PERCENT-4:3}
-		echo $PERCENT
+		#echo $PERCENT
 
-		if (($PERCENT>=DISKSPACE_WARN));
-			then
+		if (($PERCENT>=$DISKSPACE_WARN));
+		then
 			if (($WARNLEVEL<1));
-				then
-				WARNLEVEL=1
-				fi
-			fi
-
-		if (($PERCENT>=DISKSPACE_CRIT));
 			then
-			if (($WARNLEVEL<2));
-				then
-				WARNLEVEL=2
-				fi
+				WARNLEVEL=1
 			fi
+		fi
+
+		if (($PERCENT>=$DISKSPACE_CRIT));
+		then
+			if (($WARNLEVEL<2));
+			then
+				WARNLEVEL=2
+			fi
+		fi
 
 	done < $DF_FILE
 }
 
 send_mail() {
-	if WARNLEVEL==1
+	if (($WARNLEVEL == 1));
 	then
-		 mail -s "WARNING - Disk-Usage over $DISKSPACE_WARN percent" $MAIL_TO < ./df.txt
-	 fi
+		mail -s "WARNING - Disk-Usage over $DISKSPACE_WARN percent" $MAIL_TO < ./df.txt
 
-	 if WARNLEVEL==2
-	 then
-			mail -s "CRITICAL - Disk-Usage over $DISKSPACE_CRIT percent" $MAIL_TO < ./df.txt
-		fi
+
+	elif (($WARNLEVEL == 2));
+	then
+		mail -s "CRITICAL - Disk-Usage over $DISKSPACE_CRIT percent" $MAIL_TO < ./df.txt
+	fi
 }
 
 
