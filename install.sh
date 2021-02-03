@@ -44,8 +44,8 @@ get_files(){
 
 add_cron(){
   # Adds an entry to the crontab of root, we want to run the script every 5 minutes
-  echo "# Entry for the lx_server-report script in $INSTALL_PATH" | tee /etc/cron.d/lx_server-report
-  echo "*/5 * * * * root  /bin/bash -c "$INSTALL_PATH/report.sh"" | tee /etc/cron.d/lx_server-report
+  echo "# Entry for the lx_server-report script in $INSTALL_PATH" | tee -a /etc/cron.d/lx_server-report
+  echo "*/5 * * * * root  /bin/bash -c "$INSTALL_PATH/report.sh"" | tee -a /etc/cron.d/lx_server-report
 }
 
 root_check
