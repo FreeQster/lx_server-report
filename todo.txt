@@ -1,6 +1,0 @@
-- Mail report - OK
-- Free Diskspace - OK
-- Warning level percentage - OK
-- CPU Load
-- Install script - OK
-- catch errors in main program and install script
