@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Mailserver hostname or address
-SMTPSERVER=mailserver
 # Recipient e-mail address
 MAIL_TO=root
 
