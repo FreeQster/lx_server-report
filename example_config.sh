@@ -3,7 +3,7 @@
 # Mailserver hostname or address
 SMTPSERVER=mailserver
 # Recipient e-mail address
-MAIL_TO=my@mail.com
+MAIL_TO=root
 
 # Warning treshold percentage for free disk space
 DISKSPACE_WARN=80
