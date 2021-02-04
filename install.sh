@@ -30,7 +30,7 @@ get_files(){
   unzip -d /tmp/ /tmp/lx_server-report.zip
 
   # Create install dir
-  mkdir $INSTALL_PATH
+  mkdir -p $INSTALL_PATH
 
   # Copy files
   cp /tmp/lx_server-report-main/report.sh $INSTALL_PATH/
