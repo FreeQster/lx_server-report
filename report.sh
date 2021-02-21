@@ -9,9 +9,21 @@ WARNLEVEL=0
 
 
 DF_FILE="./df.txt"
+LOAD_FILE="./load.txt"
+RUN_COUNT="./run_count.txt"
 
 write_diskspace() {
 	df -h > $DF_FILE
+}
+
+run_count() {
+	# Count the number of runs
+
+}
+
+collect_load_average() {
+	# Get load average once per run and write it to LOAD_FILE
+	cat /proc/loadavg >> $LOAD_FILE
 }
 
 diskspace_check() {
