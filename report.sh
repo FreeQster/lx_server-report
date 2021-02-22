@@ -8,9 +8,9 @@ source $SCRIPTPATH/config.sh
 WARNLEVEL=0
 
 
-DF_FILE="./df.txt"
-LOAD_FILE="./load.txt"
-RUN_COUNT="./run_count.txt"
+DF_FILE="$SCRIPTPATH/df.txt"
+LOAD_FILE="$SCRIPTPATH/load.txt"
+RUN_COUNT="$SCRIPTPATH/run_count.txt"
 
 write_diskspace() {
 	df -h > $DF_FILE
@@ -18,7 +18,10 @@ write_diskspace() {
 
 run_count() {
 	# Count the number of runs
-
+	touch $RUN_COUNT
+	i=`cat $RUN_COUNT`
+	i=$((i+1))
+	echo $i | tee $RUN_COUNT
 }
 
 collect_load_average() {
