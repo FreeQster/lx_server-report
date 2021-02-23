@@ -2,7 +2,7 @@
 Bash Script for reading health parameters from debian servers and reporting issues via e-mail
 
 Features:
-- At the moment only check the free disk space and report when you are running low on free space
+- By now only check the free disk space and report when you are running low on free space
 
 Installation instructions:
 - Download install.sh: https://raw.githubusercontent.com/FreeQster/lx_server-report/main/install.sh
