@@ -17,3 +17,4 @@ write_diskspace
 diskspace_check
 send_mail
 run_count
+collect_load_average
