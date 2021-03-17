@@ -3,6 +3,7 @@
 
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 source $SCRIPTPATH/config.sh
+. $SCRIPTPATH/functions.sh
 
 #Warnlevels for the e-mail subject (Can be 0=info, 1=warning, 2=critical)
 WARNLEVEL=0
