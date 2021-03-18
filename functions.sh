@@ -86,8 +86,13 @@ calc_load_average() {
 
   #Divide load_avg through the run counter to get the average
   load_avg=$(bc <<< "scale=2;$load_avg/$rc")
-  echo $load_avg
+
+  #Delete load.txt and run_count.txt
+  rm load.txt
+  rm run_count.txt
 }
+
+
 
 diskspace_check() {
 	#Checks for the free space values in $DF_FILE
