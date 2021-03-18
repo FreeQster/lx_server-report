@@ -64,6 +64,31 @@ collect_load_average() {
 	cat /proc/loadavg >> $LOAD_FILE
 }
 
+calc_load_average() {
+  #SUM up 5-Minute load_average, divide through run_count, then reset
+  rc=`cat $RUN_COUNT`
+  load_avg="0.00"
+
+  while read LINE; do
+    #Find the third dot in every line
+    char=.
+    len=${#LINE}
+    for (( i=0; i < len; i++ )); do
+      if [[ $char == ${LINE:$i:1} ]]
+      then MARKER=$i
+      fi
+    #Write 5min L_A in var LOAD
+    LOAD=${LINE:$MARKER-2:5}
+    done
+    #Add LOAD from each loop to load_avg
+    load_avg=$( bc <<< "$load_avg + $LOAD" )
+  done < $LOAD_FILE
+
+  #Divide load_avg through the run counter to get the average
+  load_avg=$(bc <<< "scale=2;$load_avg/$rc")
+  echo $load_avg
+}
+
 diskspace_check() {
 	#Checks for the free space values in $DF_FILE
 	while read LINE; do
