@@ -11,7 +11,7 @@ Additional Information:
   - Main script file report.sh in the installation directory
 
 Installation instructions:
-- Download install.sh: https://raw.githubusercontent.com/FreeQster/lx_server-report/main/install.sh
+- Download install.sh: wget https://raw.githubusercontent.com/FreeQster/lx_server-report/main/install.sh
 - Execute "chmod +x install.sh" to make the install-script executable
 - Run install.sh as root like "sudo bash install.sh"
 - The system should be able to send mails - This is required for the script to work
