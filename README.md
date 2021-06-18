@@ -4,6 +4,12 @@ Bash Script for reading health parameters from debian servers and reporting issu
 Features:
 - By now only check the free disk space and report when you are running low on free space
 
+Additional Information:
+- There is no error catching implemented yet
+- The installation was successful when the following files are there:
+  - Cron entry /etc/cron.d/lx_server-report
+  - Main script file report.sh in the installation directory
+
 Installation instructions:
 - Download install.sh: https://raw.githubusercontent.com/FreeQster/lx_server-report/main/install.sh
 - Execute "chmod +x install.sh" to make the install-script executable
