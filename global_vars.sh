@@ -4,4 +4,4 @@ DF_FILE="$SCRIPTPATH/df.txt"
 
 ###Source
 source $SCRIPTPATH/config.sh
-for f in $SCRIPTPATH/functions; do source $f; done
+for f in $SCRIPTPATH/functions/* ; do source $f; done
